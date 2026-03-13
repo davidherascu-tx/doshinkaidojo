@@ -10,13 +10,24 @@ export default function Home() {
         {/* Left: Typography Block */}
         <div className="w-full lg:w-1/2 flex flex-col z-10">
           <div className="w-16 h-1.5 bg-red-700 mb-8"></div>
+          
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.9] mb-6 text-black">
             Master <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-900">The Form.</span>
           </h1>
-          <p className="text-lg md:text-xl text-neutral-500 font-medium leading-relaxed mb-10 max-w-lg">
+          <p className="text-lg md:text-xl text-neutral-500 font-medium leading-relaxed mb-6 max-w-lg">
             Traditional Shotokan Karate in Cincinnati. We build character, discipline, and strength through strict adherence to Japanese martial arts roots.
           </p>
+          
+          {/* Se Habla Español Badge */}
+          <div className="flex items-center gap-3 mb-10">
+            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-50 text-red-700">
+               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+            </span>
+            <span className="text-xs font-black uppercase tracking-widest text-neutral-400">
+              Se Habla Español
+            </span>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
@@ -52,23 +63,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. PHILOSOPHY & STORY SECTION (NEW) */}
+      {/* 2. PHILOSOPHY & STORY SECTION */}
       <section className="bg-black text-white py-24 md:py-32 relative overflow-hidden">
+
         
         {/* Giant Kanji Background Watermark */}
-        <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[250px] md:text-[400px] font-black text-neutral-900 opacity-50 select-none pointer-events-none z-0">
+        {/* ADJUSTED: Changed from text-neutral-900 opacity-50 to text-white/5 */}
+        <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[250px] md:text-[400px] font-black text-white/5 select-none pointer-events-none z-0">
           空手道
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             
-            {/* Left Column: Title */}
+            {/* Left Column: Title & BIG KANJI */}
             <div className="lg:col-span-4">
               <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">
                 Philosophy <br /> <span className="text-red-700">&amp; Story</span>
               </h2>
               <div className="w-12 h-1 bg-red-700 mt-6"></div>
+              
+              {/* NEW: Massive Kanji relocated here */}
+              {/* ADJUSTED: Changed from text-neutral-800 to text-white */}
+              <div className="text-6xl md:text-8xl font-black tracking-widest text-white select-none mt-12 md:mt-24">
+                空手道
+              </div>
             </div>
 
             {/* Right Column: Content */}
@@ -181,7 +200,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. COMMUNITY / WE SUPPORT BANNER (NEW) */}
+      {/* 4. COMMUNITY / WE SUPPORT BANNER */}
       <section className="bg-white py-16 border-t border-neutral-200 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h4 className="text-xs font-black uppercase tracking-widest text-red-700 mb-4">Community</h4>
