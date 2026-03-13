@@ -95,7 +95,7 @@ export default function Resources() {
           Ready to join our community?
         </p>
         <a 
-          href="/shop/class-registration" 
+          href="/join/class-registration" 
           className="inline-block text-lg font-black uppercase tracking-widest text-black hover:text-red-700 transition-colors border-b-4 border-black hover:border-red-700 pb-1"
         >
           View Class Schedule &rarr;

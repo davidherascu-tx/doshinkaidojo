@@ -20,7 +20,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Link 
-              href="/shop/class-registration" 
+              href="/join/class-registration" 
               className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden"
             >
               <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
@@ -130,7 +130,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black mb-4">Explore</h2>
               <p className="text-neutral-500 font-medium">Your path at Doshinkai Dojo</p>
             </div>
-            <Link href="/shop/class-registration" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-red-700 hover:text-black transition-colors group">
+            <Link href="/join/class-registration" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-red-700 hover:text-black transition-colors group">
               View All Classes <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
             </Link>
           </div>
@@ -138,7 +138,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Card 1 */}
-            <Link href="/shop/class-registration" className="group bg-white border border-neutral-200 p-8 hover:border-red-700 hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
+            <Link href="/join/class-registration" className="group bg-white border border-neutral-200 p-8 hover:border-red-700 hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
               <div className="absolute top-0 left-0 w-full h-1 bg-red-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-4 block">Enroll</span>

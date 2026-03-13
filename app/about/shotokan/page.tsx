@@ -126,7 +126,7 @@ export default function ShotokanKarate() {
             Contact us now to reserve your spot and embark on an exciting adventure filled with growth, empowerment, and safety. We can’t wait to see you on the mat.
           </p>
           <Link 
-            href="/shop/class-registration" 
+            href="/join/class-registration" 
             className="group relative inline-flex items-center justify-center px-10 py-5 text-base font-bold uppercase tracking-widest text-white bg-black overflow-hidden shadow-2xl hover:-translate-y-1 transition-all duration-300"
           >
             <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>

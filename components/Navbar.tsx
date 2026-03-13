@@ -8,7 +8,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
-  // Handle scroll effect for desktop header
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
@@ -17,7 +16,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -72,7 +70,7 @@ export default function Navbar() {
               {/* Logo area */}
               <Link href="/" onClick={closeMobileMenu} className="flex items-center gap-3 md:gap-4 group shrink-0 relative z-50">
                 <div className={`relative overflow-hidden transition-all duration-500 ease-out ${scrolled ? 'w-10 h-10 md:w-12 md:h-12' : 'w-12 h-12 md:w-16 md:h-16 group-hover:scale-105'}`}>
-                 <img src="/doshinkai_logo.png" alt="Doshinkai Dojo Logo" className="w-full h-full object-contain" />
+                  <img src="/doshinkai_logo.png" alt="Doshinkai Dojo Logo" className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col justify-center">
                   <span className={`font-black uppercase tracking-tighter text-neutral-900 group-hover:text-red-700 transition-all duration-500 ${scrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'}`}>
@@ -144,17 +142,24 @@ export default function Navbar() {
                   Schedule
                 </Link>
                 
-                {/* Events */}
+                {/* Events - UPDATED */}
                 <div className="relative group h-full flex items-center">
                   <button className="text-sm font-bold uppercase tracking-widest text-neutral-900 group-hover:text-red-700 transition-colors duration-300 flex items-center gap-2 cursor-pointer h-full">
                     Events
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                   </button>
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-48 bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.08)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-4">
-                    <Link href="/events/archive" className="group/link flex items-center justify-between p-2 hover:bg-neutral-50 transition-colors duration-300">
-                      <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 transition-colors">Archive</span>
-                      <span className="text-red-700 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">&rarr;</span>
-                    </Link>
+                  
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-[280px] bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.08)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-4">
+                    <div className="flex flex-col gap-2">
+                      <Link href="/events" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Upcoming Events</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Seminars & Gasshukus</span>
+                      </Link>
+                      <Link href="/events/archive" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Event Archive</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Past clinics & gatherings</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 
@@ -169,41 +174,57 @@ export default function Navbar() {
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                   </button>
                   
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-[500px] bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.08)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <Link href="/shop/class-registration" className="col-span-2 group/card border border-neutral-200 p-5 hover:border-red-700 hover:shadow-lg transition-all duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-red-700 scale-y-0 group-hover/card:scale-y-100 transition-transform duration-300 origin-top"></div>
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <h4 className="text-base font-bold text-neutral-900 group-hover/card:text-red-700 transition-colors">Class Registration</h4>
-                            <p className="text-xs text-neutral-500 mt-1">Join our upcoming training sessions</p>
-                          </div>
-                          <span className="bg-neutral-900 text-white text-[10px] uppercase tracking-widest px-3 py-1 font-bold group-hover/card:bg-red-700 transition-colors">Sign Up</span>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-[280px] bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.08)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-4">
+                    <div className="flex flex-col gap-2">
+                      <Link href="/shop/accessories" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Accessories</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Dojo gear & equipment</span>
+                      </Link>
+                      <a href="https://skifusa.org/shop" target="_blank" rel="noopener noreferrer" className="group/link flex items-center justify-between p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <div>
+                          <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">SKIFUSA Goods</span>
+                          <span className="text-xs text-neutral-500 mt-1 block">Official Federation Shop</span>
                         </div>
-                      </Link>
-                      <Link href="/shop/private-class" className="border border-neutral-100 bg-neutral-50 p-5 hover:bg-white hover:border-neutral-300 transition-all duration-300 group/card">
-                        <h4 className="text-sm font-bold text-neutral-900 group-hover/card:text-red-700 transition-colors">Private Class</h4>
-                        <p className="text-xs text-neutral-500 mt-1">1-on-1 instruction</p>
-                      </Link>
-                      <Link href="/shop/accessories" className="border border-neutral-100 bg-neutral-50 p-5 hover:bg-white hover:border-neutral-300 transition-all duration-300 group/card">
-                        <h4 className="text-sm font-bold text-neutral-900 group-hover/card:text-red-700 transition-colors">Accessories</h4>
-                        <p className="text-xs text-neutral-500 mt-1">Gear & equipment</p>
-                      </Link>
-                      <Link href="/shop/skifusa-goods" className="col-span-2 border border-neutral-100 bg-neutral-50 p-4 hover:bg-white hover:border-neutral-300 transition-all duration-300 group/card flex justify-between items-center">
-                        <h4 className="text-sm font-bold text-neutral-900 group-hover/card:text-red-700 transition-colors">SKIFUSA Goods</h4>
-                        <span className="text-neutral-400 group-hover/card:translate-x-1 transition-transform">&rarr;</span>
-                      </Link>
+                        <svg className="w-4 h-4 text-neutral-400 group-hover/link:text-red-700 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* CTA Button */}
-              <div className="hidden lg:flex items-center">
-                <Link href="/contact" className="relative inline-flex items-center justify-center px-8 py-3 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden group">
-                  <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
-                  <span className="relative">Contact Us</span>
+              {/* JOIN / SIGN UP ACTION AREA */}
+              <div className="hidden lg:flex items-center gap-6 h-full">
+                <Link href="/contact" className="text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-red-700 transition-colors">
+                  Contact
                 </Link>
+                
+                {/* Join Dropdown Group */}
+                <div className="relative group h-full flex items-center">
+                  <button className="relative inline-flex items-center justify-center px-6 py-3 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden group-hover:shadow-lg transition-all duration-300 cursor-pointer">
+                    <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span className="relative flex items-center gap-2">
+                      Join / Sign Up
+                      <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                  </button>
+
+                  {/* Dropdown Menu for Join */}
+                  <div className="absolute right-0 top-full w-[280px] bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.1)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-4">
+                    <div className="flex flex-col gap-2">
+                      <Link href="/join/class-registration" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <div className="flex justify-between items-center mb-1">
+                          <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700">Class Registration</span>
+                          <span className="text-[9px] font-black uppercase tracking-widest text-red-700 bg-red-100 px-2 py-0.5 rounded-sm">Popular</span>
+                        </div>
+                        <span className="text-xs text-neutral-500 block">Join group training sessions</span>
+                      </Link>
+                      <Link href="/join/private-class" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block mb-1">Private Class</span>
+                        <span className="text-xs text-neutral-500 block">Book 1-on-1 instruction</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>
@@ -240,7 +261,7 @@ export default function Navbar() {
               Schedule
             </Link>
 
-            {/* Events Accordion */}
+            {/* Events Accordion - UPDATED */}
             <div className="border-b border-neutral-200 pb-4">
               <button 
                 onClick={() => toggleAccordion('events')}
@@ -251,7 +272,8 @@ export default function Navbar() {
               </button>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === 'events' ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="flex flex-col space-y-4 pl-4 border-l-2 border-red-700">
-                  <Link href="/events/archive" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Archive</Link>
+                  <Link href="/events" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Upcoming Events</Link>
+                  <Link href="/events/archive" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Event Archive</Link>
                 </div>
               </div>
             </div>
@@ -265,14 +287,13 @@ export default function Navbar() {
                 Shop
                 <span className={`text-red-700 transition-transform duration-300 ${activeAccordion === 'shop' ? 'rotate-45' : ''}`}>+</span>
               </button>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === 'shop' ? 'max-h-80 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === 'shop' ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
                 <div className="flex flex-col space-y-4 pl-4 border-l-2 border-red-700">
-                  <Link href="/shop/class-registration" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest flex items-center justify-between">
-                    Class Registration <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 ml-2">HOT</span>
-                  </Link>
-                  <Link href="/shop/private-class" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Private Class</Link>
                   <Link href="/shop/accessories" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Accessories</Link>
-                  <Link href="/shop/skifusa-goods" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">SKIFUSA Goods</Link>
+                  <a href="https://skifusa.org/shop" target="_blank" rel="noopener noreferrer" className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest flex items-center gap-2">
+                    SKIFUSA Goods
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -280,6 +301,26 @@ export default function Navbar() {
             <Link href="/resources" onClick={closeMobileMenu} className="text-2xl font-black uppercase tracking-tight text-neutral-900 border-b border-neutral-200 pb-4">
               Resources
             </Link>
+
+            {/* JOIN / SIGN UP Accordion */}
+            <div className="border-b border-neutral-200 pb-4">
+              <button 
+                onClick={() => toggleAccordion('join')}
+                className="w-full flex justify-between items-center text-left text-2xl font-black uppercase tracking-tight text-red-700"
+              >
+                Join / Sign Up
+                <span className={`text-black transition-transform duration-300 ${activeAccordion === 'join' ? 'rotate-45' : ''}`}>+</span>
+              </button>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === 'join' ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="flex flex-col space-y-4 pl-4 border-l-2 border-black">
+                  <Link href="/join/class-registration" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-black uppercase tracking-widest flex items-center justify-between">
+                    Class Registration <span className="text-[10px] bg-red-100 text-red-700 px-2 py-0.5 ml-2">HOT</span>
+                  </Link>
+                  <Link href="/join/private-class" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-black uppercase tracking-widest">Private Class</Link>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div className="mt-auto pt-8">

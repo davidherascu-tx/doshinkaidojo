@@ -5,13 +5,10 @@ export default function Footer() {
     <footer className="bg-neutral-50 text-neutral-900 relative overflow-hidden border-t-8 border-red-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 relative z-10">
         
-        {/* Top Section: Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
           
-          {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="w-16 h-16 bg-white border border-neutral-200 shadow-sm rounded-full flex items-center justify-center p-2 mb-6">
-              {/* Make sure the src matches your exact logo file name! */}
               <img src="/doshinkai_logo.png" alt="Doshinkai Dojo" className="w-full h-full object-contain" />
             </div>
             <h3 className="text-xl font-black uppercase tracking-tighter mb-4 text-black">Doshinkai Dojo</h3>
@@ -20,7 +17,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Dojo Location */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-6">Dojo Location</h4>
             <ul className="space-y-2 text-sm text-neutral-600">
@@ -31,7 +27,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Mailing Address */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-6">Mailing Address</h4>
             <ul className="space-y-2 text-sm text-neutral-600">
@@ -40,7 +35,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Quick Links */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-red-700 mb-6">Contact Us</h4>
             <ul className="space-y-4 text-sm text-neutral-600">
@@ -58,8 +52,7 @@ export default function Footer() {
               </li>
             </ul>
             <div className="mt-8">
-              {/* Button inverted to black for contrast */}
-              <Link href="/shop/class-registration" className="inline-block bg-black text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-red-700 transition-colors duration-300">
+              <Link href="/join/class-registration" className="inline-block bg-black text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-red-700 transition-colors duration-300">
                 Register Now
               </Link>
             </div>
@@ -67,7 +60,6 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-neutral-500 uppercase tracking-widest font-bold">
           <p>&copy; {new Date().getFullYear()} Doshinkai Dojo. All Rights Reserved.</p>
           <div className="flex gap-6">
@@ -77,7 +69,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Massive Background Watermark - Adjusted for Light Background */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden flex justify-center pointer-events-none select-none">
         <span className="text-[15vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap text-black opacity-[0.03]">
           DOSHINKAI

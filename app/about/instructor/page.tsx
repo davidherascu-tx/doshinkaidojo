@@ -144,7 +144,7 @@ export default function InstructorProfile() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link 
-              href="/shop/class-registration" 
+              href="/join/class-registration" 
               className="group relative inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
@@ -154,7 +154,7 @@ export default function InstructorProfile() {
               </span>
             </Link>
             <Link 
-              href="/shop/private-class" 
+              href="/join/private-class" 
               className="inline-flex items-center justify-center px-8 py-4 text-sm font-bold uppercase tracking-widest text-black border-2 border-black hover:bg-neutral-100 transition-colors"
             >
               Book Private Class
