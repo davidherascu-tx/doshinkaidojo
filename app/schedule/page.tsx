@@ -52,6 +52,44 @@ export default function Schedule() {
         </div>
       </section>
 
+      {/* 1.5 LOCATION INFO BAR (NEW) */}
+      <section className="bg-black text-white py-12 border-b-4 border-red-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            
+            {/* Physical Address */}
+            <div className="flex items-start gap-4">
+              <div className="mt-1 shrink-0">
+                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              </div>
+              <div>
+                <h3 className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Physical Dojo</h3>
+                <p className="font-bold text-lg mb-1">Doshinkai Dojo</p>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  6620 Montgomery Road, Suite 3<br />
+                  Cincinnati, OH 45213
+                </p>
+              </div>
+            </div>
+
+            {/* Virtual Info */}
+            <div className="flex items-start gap-4 md:border-l md:border-neutral-800 md:pl-8">
+              <div className="mt-1 shrink-0">
+                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              </div>
+              <div>
+                <h3 className="text-xs font-black uppercase tracking-widest text-red-600 mb-1">Virtual Training</h3>
+                <p className="font-bold text-lg mb-1">Zoom Access</p>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Secure links for all virtual classes are provided directly to registered students prior to class.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* 2. THE AGENDA GRID */}
       <section className="py-24 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,7 +144,7 @@ export default function Schedule() {
         </div>
       </section>
 
-      {/* 3. ATTENDANCE GUIDELINES (Age & Duration Rules) */}
+      {/* 3. ATTENDANCE GUIDELINES */}
       <section className="py-24 bg-white border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
