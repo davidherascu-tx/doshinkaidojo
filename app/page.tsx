@@ -4,10 +4,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-red-700 selection:text-white">
       
-      {/* 1. HERO SECTION 
-        Note the pt-[120px] md:pt-[150px]. This pushes the content down 
-        so it doesn't hide behind your massive, fixed editorial Navbar.
-      */}
+      {/* 1. HERO SECTION */}
       <section className="relative pt-[120px] md:pt-[150px] pb-20 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
         {/* Left: Typography Block */}
@@ -42,20 +39,89 @@ export default function Home() {
         </div>
 
         {/* Right: Image/Visual Block */}
-        {/* To use a real image later, replace the bg-neutral-100 div with an <img /> */}
         <div className="w-full lg:w-1/2 relative">
           <div className="aspect-[4/5] bg-neutral-100 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-neutral-200 animate-pulse"></div>
-            {/* When you have a Dojo photo, uncomment this line: */}
-            {/* <img src="/dojo-hero.jpg" alt="Karate Training" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" /> */}
-            
+            <img 
+              src="/thao-lee-uGlJHMEifB4-unsplash_web.webp" 
+              alt="Doshinkai Dojo Karate Training" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+            />
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-red-700 hidden md:block"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-red-700 hidden md:block z-10"></div>
           </div>
         </div>
       </section>
 
-      {/* 2. THE GRID (Actionable Dashboard) */}
+      {/* 2. PHILOSOPHY & STORY SECTION (NEW) */}
+      <section className="bg-black text-white py-24 md:py-32 relative overflow-hidden">
+        
+        {/* Giant Kanji Background Watermark */}
+        <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[250px] md:text-[400px] font-black text-neutral-900 opacity-50 select-none pointer-events-none z-0">
+          空手道
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            
+            {/* Left Column: Title */}
+            <div className="lg:col-span-4">
+              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">
+                Philosophy <br /> <span className="text-red-700">&amp; Story</span>
+              </h2>
+              <div className="w-12 h-1 bg-red-700 mt-6"></div>
+            </div>
+
+            {/* Right Column: Content */}
+            <div className="lg:col-span-8 flex flex-col space-y-10">
+              
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold leading-snug mb-6 text-neutral-100 border-l-4 border-red-700 pl-6 py-2">
+                  DOSHINKAI means <br className="hidden md:block" />
+                  <span className="text-red-500">‘The Way of Body, Mind, and Spirit’.</span>
+                </h3>
+                <p className="text-neutral-400 text-lg leading-relaxed">
+                  The name was bestowed upon our director by the founder of our organization, Hirokazu Kanazawa, Soke. The name of our dojo exemplifies the philosophy and teachings of SKIF. The word ‘DOJO’ means ‘the place where the Way is taught and learned’.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-white text-lg font-semibold uppercase tracking-widest mb-6">
+                  At Doshinkai Dojo, we emphasize the holistic development of our practitioners:
+                </p>
+                <ul className="space-y-6">
+                  <li className="flex items-start gap-4">
+                    <span className="text-red-700 text-xl font-black mt-1">01.</span>
+                    <p className="text-neutral-300 text-lg leading-relaxed">
+                      <strong className="text-white">The body</strong> is cultivated through training in stamina, coordination, strength, and agility.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <span className="text-red-700 text-xl font-black mt-1">02.</span>
+                    <p className="text-neutral-300 text-lg leading-relaxed">
+                      <strong className="text-white">The mind</strong> is sharpened through practices fostering concentration and memory.
+                    </p>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <span className="text-red-700 text-xl font-black mt-1">03.</span>
+                    <p className="text-neutral-300 text-lg leading-relaxed">
+                      <strong className="text-white">The spirit</strong> is nurtured through lessons in perseverance, humility, and self-confidence.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="pt-8 border-t border-neutral-800">
+                <p className="text-neutral-400 text-base leading-relaxed">
+                  Doshinkai Dojo is proudly affiliated with the Shotokan Karate-Do International Federation-United States of America (SKIF-USA) and the Shotokan Karate-Do International Federation (SKIF) based in Japan. SKIF is one of the world’s largest traditional karate organizations, boasting over 2 million members across more than 130 countries.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. THE GRID (Actionable Dashboard) */}
       <section className="bg-neutral-50 py-24 border-t border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -112,6 +178,27 @@ export default function Home() {
             </Link>
 
           </div>
+        </div>
+      </section>
+
+      {/* 4. COMMUNITY / WE SUPPORT BANNER (NEW) */}
+      <section className="bg-white py-16 border-t border-neutral-200 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <h4 className="text-xs font-black uppercase tracking-widest text-red-700 mb-4">Community</h4>
+          <h2 className="text-2xl md:text-3xl font-bold text-black mb-6">We Proudly Support</h2>
+          <a 
+            href="https://aikidocincy.org" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex flex-col items-center group"
+          >
+            <span className="text-lg md:text-xl font-semibold text-neutral-600 group-hover:text-black transition-colors duration-300 mb-1">
+              Aikido of Cincinnati
+            </span>
+            <span className="text-sm text-red-700 font-medium group-hover:underline decoration-2 underline-offset-4 transition-all">
+              aikidocincy.org
+            </span>
+          </a>
         </div>
       </section>
 
