@@ -42,7 +42,7 @@ export default function Home() {
         <div className="w-full lg:w-1/2 relative">
           <div className="aspect-[4/5] bg-neutral-100 relative overflow-hidden group">
             <img 
-              src="/thao-lee-uGlJHMEifB4-unsplash_web.webp" 
+              src="/hero_image.webp" 
               alt="Doshinkai Dojo Karate Training" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
             />
