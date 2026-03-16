@@ -33,17 +33,17 @@ export default function Contact() {
               <h3 className="text-3xl font-black uppercase tracking-tighter text-black">Send an Inquiry</h3>
             </div>
 
- <form action="/send_email.php" method="POST" className="space-y-10">
+            <form className="space-y-10">
               {/* Name Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative group">
-                  <input type="text" id="firstName" name="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                  <input type="text" id="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                   <label htmlFor="firstName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                     First Name
                   </label>
                 </div>
                 <div className="relative group">
-                  <input type="text" id="lastName" name="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                  <input type="text" id="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                   <label htmlFor="lastName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                     Last Name
                   </label>
@@ -53,13 +53,13 @@ export default function Contact() {
               {/* Contact Row */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative group">
-                  <input type="email" id="email" name="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                  <input type="email" id="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                   <label htmlFor="email" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                     Email Address
                   </label>
                 </div>
                 <div className="relative group">
-                  <input type="tel" id="phone" name="phone" className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                  <input type="tel" id="phone" className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                   <label htmlFor="phone" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                     Phone Number (Optional)
                   </label>
@@ -68,12 +68,12 @@ export default function Contact() {
 
               {/* Topic Dropdown */}
               <div className="relative group">
-                <select id="topic" name="topic" required defaultValue="" className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
-                  <option value="" disabled hidden>Subject / Topic</option>
-                  <option value="General Classes">General Classes</option>
-                  <option value="Private Training">Private Training</option>
-                  <option value="Seminars / Events">Seminars / Events</option>
-                  <option value="Other Inquiry">Other Inquiry</option>
+                <select id="topic" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
+                  <option value="" disabled selected hidden>Subject / Topic</option>
+                  <option value="classes">General Classes</option>
+                  <option value="private">Private Training</option>
+                  <option value="events">Seminars / Events</option>
+                  <option value="other">Other Inquiry</option>
                 </select>
                 <div className="absolute right-0 top-4 pointer-events-none">
                   <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -82,7 +82,7 @@ export default function Contact() {
 
               {/* Message */}
               <div className="relative group pt-4">
-                <textarea id="message" name="message" required rows={4} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
+                <textarea id="message" required rows={4} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
                 <label htmlFor="message" className="absolute left-0 top-6 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   How can we help you?
                 </label>
@@ -101,8 +101,9 @@ export default function Contact() {
                   </span>
                 </button>
               </div>
+              
             </form>
-            </div>
+          </div>
 
           {/* RIGHT COLUMN: Contact Info Block */}
           <div className="lg:col-span-5">
