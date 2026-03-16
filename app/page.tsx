@@ -36,7 +36,7 @@ export default function Home() {
             >
               <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
               <span className="relative flex items-center gap-3">
-                Start Training
+                Start Training1
                 <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </span>
             </Link>
