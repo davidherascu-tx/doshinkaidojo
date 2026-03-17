@@ -16,7 +16,7 @@ export default function Home() {
       "addressCountry": "US"
     },
     "telephone": "+1-832-513-0058",
-    "url": "https://doshinkaidojo.com" // Update this if your live domain is different
+    "url": "https://doshinkaidojo.com" 
   };
 
   return (
@@ -39,7 +39,8 @@ export default function Home() {
             Master <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-red-900">The Form.</span>
           </h1>
-          <p className="text-lg md:text-xl text-neutral-500 font-medium leading-relaxed mb-6 max-w-lg">
+          {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+          <p className="text-lg md:text-xl text-neutral-600 font-medium leading-relaxed mb-6 max-w-lg">
             Traditional Shotokan Karate in Cincinnati. We build character, discipline, and strength through strict adherence to Japanese martial arts roots.
           </p>
           
@@ -48,7 +49,8 @@ export default function Home() {
             <span className="flex items-center justify-center w-6 h-6 rounded-full bg-red-50 text-red-700">
                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
             </span>
-            <span className="text-xs font-black uppercase tracking-widest text-neutral-400">
+            {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+            <span className="text-xs font-black uppercase tracking-widest text-neutral-600">
               Se Habla Español
             </span>
           </div>
@@ -76,7 +78,6 @@ export default function Home() {
         {/* Right: Image/Visual Block */}
         <div className="w-full lg:w-1/2 relative">
           <div className="aspect-[4/5] bg-neutral-100 relative overflow-hidden group">
-            {/* UPDATED: Next.js Image Component for better SEO / Page Speed */}
             <Image 
               src="/hero_image.webp" 
               alt="Doshinkai Dojo Karate Training" 
@@ -85,7 +86,6 @@ export default function Home() {
               priority
               className="object-cover group-hover:scale-105 transition-transform duration-700" 
             />
-            {/* Decorative element */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-red-700 hidden md:block z-10"></div>
           </div>
         </div>
@@ -94,7 +94,6 @@ export default function Home() {
       {/* 2. PHILOSOPHY & STORY SECTION */}
       <section className="bg-black text-white py-24 md:py-32 relative overflow-hidden">
 
-        {/* Giant Kanji Background Watermark */}
         <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[250px] md:text-[400px] font-black text-white/5 select-none pointer-events-none z-0">
           空手道
         </div>
@@ -102,7 +101,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             
-            {/* Left Column: Title & BIG KANJI */}
             <div className="lg:col-span-4">
               <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4">
                 Philosophy <br /> <span className="text-red-700">&amp; Story</span>
@@ -114,7 +112,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column: Content */}
             <div className="lg:col-span-8 flex flex-col space-y-10">
               
               <div>
@@ -171,7 +168,8 @@ export default function Home() {
           <div className="flex justify-between items-end mb-12">
             <div>
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter text-black mb-4">Explore</h2>
-              <p className="text-neutral-500 font-medium">Your path at Doshinkai Dojo</p>
+              {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+              <p className="text-neutral-600 font-medium">Your path at Doshinkai Dojo</p>
             </div>
             <Link href="/join/class-registration" className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-red-700 hover:text-black transition-colors group">
               View All Classes <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
@@ -184,9 +182,11 @@ export default function Home() {
             <Link href="/join/class-registration" className="group bg-white border border-neutral-200 p-8 hover:border-red-700 hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
               <div className="absolute top-0 left-0 w-full h-1 bg-red-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-4 block">Enroll</span>
+                {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600 mb-4 block">Enroll</span>
                 <h3 className="text-2xl font-black uppercase tracking-tight text-black mb-2">Class Registration</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">Join our upcoming training sessions. Suitable for all skill levels.</p>
+                {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                <p className="text-neutral-600 text-sm leading-relaxed">Join our upcoming training sessions. Suitable for all skill levels.</p>
               </div>
               <div className="flex justify-between items-center mt-8">
                 <span className="text-red-700 font-bold group-hover:translate-x-2 transition-transform">&rarr;</span>
@@ -198,9 +198,11 @@ export default function Home() {
             <Link href="/schedule" className="group bg-white border border-neutral-200 p-8 hover:border-black hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
               <div className="absolute top-0 left-0 w-full h-1 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-4 block">Calendar</span>
+                {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600 mb-4 block">Calendar</span>
                 <h3 className="text-2xl font-black uppercase tracking-tight text-black mb-2">Dojo Schedule</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">Find the right training times for you and your family.</p>
+                {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                <p className="text-neutral-600 text-sm leading-relaxed">Find the right training times for you and your family.</p>
               </div>
               <div className="flex justify-between items-center mt-8">
                 <span className="text-black font-bold group-hover:translate-x-2 transition-transform">&rarr;</span>
@@ -211,9 +213,11 @@ export default function Home() {
             <Link href="/about/shotokan" className="group bg-white border border-neutral-200 p-8 hover:border-black hover:shadow-2xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
               <div className="absolute top-0 left-0 w-full h-1 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400 mb-4 block">Philosophy</span>
+                {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-600 mb-4 block">Philosophy</span>
                 <h3 className="text-2xl font-black uppercase tracking-tight text-black mb-2">The Way of Shotokan</h3>
-                <p className="text-neutral-500 text-sm leading-relaxed">Learn the history, roots, and benefits of traditional Japanese Karate.</p>
+                {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                <p className="text-neutral-600 text-sm leading-relaxed">Learn the history, roots, and benefits of traditional Japanese Karate.</p>
               </div>
               <div className="flex justify-between items-center mt-8">
                 <span className="text-black font-bold group-hover:translate-x-2 transition-transform">&rarr;</span>

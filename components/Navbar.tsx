@@ -76,7 +76,8 @@ export default function Navbar() {
                   <span className={`font-black uppercase tracking-tighter text-neutral-900 group-hover:text-red-700 transition-all duration-500 ${scrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl'}`}>
                     DOSHINKAI DOJO
                   </span>
-                  <span className={`text-neutral-400 uppercase tracking-[0.3em] font-bold transition-all duration-500 hidden md:block ${scrolled ? 'text-[8px] opacity-0 h-0' : 'text-[10px] opacity-100 mt-1'}`}>
+                  {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                  <span className={`text-neutral-600 uppercase tracking-[0.3em] font-bold transition-all duration-500 hidden md:block ${scrolled ? 'text-[8px] opacity-0 h-0' : 'text-[10px] opacity-100 mt-1'}`}>
                     Shotokan Karate
                   </span>
                 </div>
@@ -109,28 +110,32 @@ export default function Navbar() {
                     <div className="w-1/3 bg-neutral-50 p-8 border-r border-neutral-100 flex flex-col justify-between">
                       <div>
                         <h3 className="text-xs font-black uppercase tracking-widest text-red-700 mb-2">Our Foundation</h3>
-                        <p className="text-sm text-neutral-500 leading-relaxed">Dedicated to the strict preservation of traditional Shotokan technique and philosophy.</p>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <p className="text-sm text-neutral-600 leading-relaxed">Dedicated to the strict preservation of traditional Shotokan technique and philosophy.</p>
                       </div>
                     </div>
                     <div className="w-2/3 p-6 grid grid-cols-1 gap-2">
                       <Link href="/about/shotokan" className="group/link flex items-center justify-between p-4 hover:bg-neutral-50 transition-colors duration-300">
                         <div>
                           <div className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 transition-colors">Shotokan Karate</div>
-                          <div className="text-xs text-neutral-400 mt-1">Benefits of learning Shotokan Karate</div>
+                          {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                          <div className="text-xs text-neutral-600 mt-1">Benefits of learning Shotokan Karate</div>
                         </div>
                         <span className="text-red-700 opacity-0 -translate-x-4 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">&rarr;</span>
                       </Link>
                       <Link href="/about/history" className="group/link flex items-center justify-between p-4 hover:bg-neutral-50 transition-colors duration-300">
                         <div>
                           <div className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 transition-colors">Karate History</div>
-                          <div className="text-xs text-neutral-400 mt-1">Roots of traditional Japanese karate</div>
+                          {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                          <div className="text-xs text-neutral-600 mt-1">Roots of traditional Japanese karate</div>
                         </div>
                         <span className="text-red-700 opacity-0 -translate-x-4 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">&rarr;</span>
                       </Link>
                       <Link href="/about/instructor" className="group/link flex items-center justify-between p-4 hover:bg-neutral-50 transition-colors duration-300">
                         <div>
                           <div className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 transition-colors">Instructors</div>
-                          <div className="text-xs text-neutral-400 mt-1">Meet the Sensei</div>
+                          {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                          <div className="text-xs text-neutral-600 mt-1">Meet the Sensei</div>
                         </div>
                         <span className="text-red-700 opacity-0 -translate-x-4 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300">&rarr;</span>
                       </Link>
@@ -153,11 +158,13 @@ export default function Navbar() {
                     <div className="flex flex-col gap-2">
                       <Link href="/events" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Upcoming Events</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Seminars & Gasshukus</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Seminars & Gasshukus</span>
                       </Link>
                       <Link href="/events/archive" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Event Archive</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Past clinics & gatherings</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Past clinics & gatherings</span>
                       </Link>
                     </div>
                   </div>
@@ -174,15 +181,18 @@ export default function Navbar() {
                     <div className="flex flex-col gap-2">
                       <Link href="/resources" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Global Network</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Our official partners</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Our official partners</span>
                       </Link>
                       <Link href="/resources/registry" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Dan & Kyu Registry</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Official belt rankings</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Official belt rankings</span>
                       </Link>
                       <Link href="/resources/affiliated" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Affiliated Dojos</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Satellite groups</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Satellite groups</span>
                       </Link>
                     </div>
                   </div>
@@ -199,14 +209,17 @@ export default function Navbar() {
                     <div className="flex flex-col gap-2">
                       <Link href="/shop/accessories" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Accessories</span>
-                        <span className="text-xs text-neutral-500 mt-1 block">Dojo gear & equipment</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 mt-1 block">Dojo gear & equipment</span>
                       </Link>
                       <a href="https://skifusa.org/shop" target="_blank" rel="noopener noreferrer" className="group/link flex items-center justify-between p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <div>
                           <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">SKIFUSA Goods</span>
-                          <span className="text-xs text-neutral-500 mt-1 block">Official Federation Shop</span>
+                          {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                          <span className="text-xs text-neutral-600 mt-1 block">Official Federation Shop</span>
                         </div>
-                        <svg className="w-4 h-4 text-neutral-400 group-hover/link:text-red-700 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+                        <svg className="w-4 h-4 text-neutral-600 group-hover/link:text-red-700 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                       </a>
                     </div>
                   </div>
@@ -237,11 +250,13 @@ export default function Navbar() {
                           <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700">Class Registration</span>
                           <span className="text-[9px] font-black uppercase tracking-widest text-red-700 bg-red-100 px-2 py-0.5 rounded-sm">Popular</span>
                         </div>
-                        <span className="text-xs text-neutral-500 block">Join group training sessions</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 block">Join group training sessions</span>
                       </Link>
                       <Link href="/join/private-class" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
                         <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block mb-1">Private Class</span>
-                        <span className="text-xs text-neutral-500 block">Book 1-on-1 instruction</span>
+                        {/* FIXED: text-neutral-500 -> text-neutral-600 */}
+                        <span className="text-xs text-neutral-600 block">Book 1-on-1 instruction</span>
                       </Link>
                     </div>
                   </div>
@@ -362,7 +377,8 @@ export default function Navbar() {
             <Link href="/contact" onClick={closeMobileMenu} className="w-full flex justify-center items-center py-4 bg-black text-white text-sm font-bold uppercase tracking-widest mb-4 hover:bg-red-700 transition-colors">
               Contact Us
             </Link>
-            <div className="text-center text-xs text-neutral-400 font-bold uppercase tracking-widest">
+            {/* FIXED: text-neutral-400 -> text-neutral-600 */}
+            <div className="text-center text-xs text-neutral-600 font-bold uppercase tracking-widest">
               P: (832) 513-0058 <br /> E: dskdojo1@gmail.com
             </div>
           </div>

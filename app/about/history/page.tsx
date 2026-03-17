@@ -196,9 +196,10 @@ export default function KarateHistory() {
       {/* 6. BRIGHT CINEMATIC CLOSING BANNER */}
       <section className="relative w-full py-32 flex items-center justify-center overflow-hidden bg-white text-center border-t border-neutral-200">
         
-        {/* Subtle Tiger Watermark */}
+{/* Subtle Tiger Watermark */}
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.02] pointer-events-none">
-          <img src="/doshinkai_logo_watermark.png" alt="Tiger Watermark" className="h-[120%] object-contain" />
+          {/* Change the src here to /doshinkai_logo.png */}
+          <img src="/doshinkai_logo.png" alt="Tiger Watermark" className="h-[120%] object-contain" />
         </div>
 
         {/* Text Overlay */}
