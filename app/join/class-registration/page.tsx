@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { sendContactEmail } from '@/app/actions/sendEmail';
 
 export default function ClassRegistration() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const plans = [
     {
@@ -36,6 +38,18 @@ export default function ClassRegistration() {
       schedule: "Sun, Sat"
     }
   ];
+
+  const handleSubmit = async (formData: FormData) => {
+    const result = await sendContactEmail(formData);
+    
+    if (result.success) {
+      alert("Registration requested successfully! We will contact you soon.");
+      formRef.current?.reset();
+      setSelectedPlan(null); // Reset the selected plan visual too
+    } else {
+      alert("Oops! Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-red-700 selection:text-white pb-24">
@@ -80,7 +94,6 @@ export default function ClassRegistration() {
                       : 'border-neutral-200 bg-white hover:border-black'
                   }`}
                 >
-                  {/* Selection Indicator Line */}
                   <div className={`absolute top-0 left-0 w-1 h-full transition-all duration-300 ${
                     selectedPlan === plan.id ? 'bg-red-700 scale-y-100' : 'bg-black scale-y-0 group-hover:scale-y-100'
                   } origin-top`}></div>
@@ -90,7 +103,6 @@ export default function ClassRegistration() {
                       <h4 className="text-xl font-bold uppercase tracking-tight text-black">{plan.name}</h4>
                       <span className="text-xs font-bold uppercase tracking-widest text-neutral-400">{plan.ages}</span>
                     </div>
-                    {/* Moved the Popular tag to the top right where the price used to be */}
                     {plan.popular && (
                       <div className="text-right">
                         <span className="text-[10px] font-bold uppercase tracking-widest text-red-700 bg-red-100 px-2 py-1">
@@ -118,7 +130,6 @@ export default function ClassRegistration() {
           <div className="lg:col-span-7">
             <div className="bg-neutral-50 p-8 md:p-12 border border-neutral-200 relative">
               
-              {/* If a plan isn't selected, show a subtle overlay asking them to select one first */}
               {!selectedPlan && (
                 <div className="absolute inset-0 bg-white/60 backdrop-blur-sm z-10 flex items-center justify-center border border-neutral-200">
                   <span className="bg-black text-white text-sm font-bold uppercase tracking-widest px-6 py-3 shadow-xl">
@@ -132,17 +143,20 @@ export default function ClassRegistration() {
                 <h3 className="text-3xl font-black uppercase tracking-tighter text-black">Student Details</h3>
               </div>
 
-              <form className="space-y-10">
+              <form ref={formRef} action={handleSubmit} className="space-y-10">
+                <input type="hidden" name="selectedPlan" value={selectedPlan || "None Selected"} />
+                <input type="hidden" name="topic" value="Class Registration" />
+
                 {/* Name Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
-                    <input type="text" id="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                    <input type="text" id="firstName" name="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                     <label htmlFor="firstName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                       First Name
                     </label>
                   </div>
                   <div className="relative group">
-                    <input type="text" id="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                    <input type="text" id="lastName" name="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                     <label htmlFor="lastName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                       Last Name
                     </label>
@@ -152,13 +166,13 @@ export default function ClassRegistration() {
                 {/* Contact Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
-                    <input type="email" id="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                    <input type="email" id="email" name="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                     <label htmlFor="email" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                       Email Address
                     </label>
                   </div>
                   <div className="relative group">
-                    <input type="tel" id="phone" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                    <input type="tel" id="phone" name="phone" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                     <label htmlFor="phone" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                       Phone Number
                     </label>
@@ -168,19 +182,18 @@ export default function ClassRegistration() {
                 {/* Details Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative group">
-                    <input type="number" id="age" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                    <input type="number" id="age" name="age" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                     <label htmlFor="age" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                       Student Age
                     </label>
                   </div>
                   <div className="relative group">
-                    <select id="experience" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
-                      <option value="" disabled selected hidden>Prior Experience</option>
-                      <option value="none">None / Beginner</option>
-                      <option value="some">Some Martial Arts Experience</option>
-                      <option value="advanced">Advanced / Prior Black Belt</option>
+                    <select id="experience" name="experience" required defaultValue="" className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
+                      <option value="" disabled hidden>Prior Experience</option>
+                      <option value="None / Beginner">None / Beginner</option>
+                      <option value="Some Martial Arts">Some Martial Arts Experience</option>
+                      <option value="Advanced / Prior Black Belt">Advanced / Prior Black Belt</option>
                     </select>
-                    {/* Custom Dropdown Arrow */}
                     <div className="absolute right-0 top-4 pointer-events-none">
                       <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
@@ -189,8 +202,8 @@ export default function ClassRegistration() {
 
                 {/* Message */}
                 <div className="relative group pt-4">
-                  <textarea id="message" rows={3} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
-                  <label htmlFor="message" className="absolute left-0 top-6 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
+                  <textarea id="medicalNotes" name="medicalNotes" rows={3} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
+                  <label htmlFor="medicalNotes" className="absolute left-0 top-6 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                     Any medical conditions or notes? (Optional)
                   </label>
                 </div>
@@ -214,7 +227,6 @@ export default function ClassRegistration() {
                     No payment required today. We will contact you to finalize enrollment.
                   </p>
                 </div>
-                
               </form>
             </div>
           </div>

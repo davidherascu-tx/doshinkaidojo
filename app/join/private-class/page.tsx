@@ -1,4 +1,22 @@
+"use client";
+
+import { useRef } from 'react';
+import { sendContactEmail } from '@/app/actions/sendEmail';
+
 export default function PrivateClass() {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (formData: FormData) => {
+    const result = await sendContactEmail(formData);
+    
+    if (result.success) {
+      alert("Private session requested successfully! We will contact you to confirm.");
+      formRef.current?.reset();
+    } else {
+      alert("Oops! Something went wrong. Please try again.");
+    }
+  };
+
   const benefits = [
     {
       title: "Tailored Curriculum",
@@ -75,17 +93,19 @@ export default function PrivateClass() {
             <h3 className="text-3xl font-black uppercase tracking-tighter text-black">Consultation Inquiry</h3>
           </div>
 
-          <form className="space-y-10">
+          <form ref={formRef} action={handleSubmit} className="space-y-10">
+            <input type="hidden" name="topic" value="Private Class Request" />
+
             {/* Name Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative group">
-                <input type="text" id="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                <input type="text" id="firstName" name="firstName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                 <label htmlFor="firstName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   First Name
                 </label>
               </div>
               <div className="relative group">
-                <input type="text" id="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                <input type="text" id="lastName" name="lastName" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                 <label htmlFor="lastName" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   Last Name
                 </label>
@@ -95,13 +115,13 @@ export default function PrivateClass() {
             {/* Contact Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative group">
-                <input type="email" id="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                <input type="email" id="email" name="email" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                 <label htmlFor="email" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   Email Address
                 </label>
               </div>
               <div className="relative group">
-                <input type="tel" id="phone" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                <input type="tel" id="phone" name="phone" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                 <label htmlFor="phone" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   Phone Number
                 </label>
@@ -111,20 +131,20 @@ export default function PrivateClass() {
             {/* Training Details Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative group">
-                <select id="currentRank" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
-                  <option value="" disabled selected hidden>Current Rank / Experience</option>
-                  <option value="none">None / Complete Beginner</option>
-                  <option value="beginner">White / Yellow / Orange Belt</option>
-                  <option value="intermediate">Green / Blue / Purple Belt</option>
-                  <option value="advanced">Brown Belt</option>
-                  <option value="black">Black Belt (Dan)</option>
+                <select id="currentRank" name="currentRank" required defaultValue="" className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors appearance-none cursor-pointer">
+                  <option value="" disabled hidden>Current Rank / Experience</option>
+                  <option value="None / Beginner">None / Complete Beginner</option>
+                  <option value="White/Yellow/Orange">White / Yellow / Orange Belt</option>
+                  <option value="Green/Blue/Purple">Green / Blue / Purple Belt</option>
+                  <option value="Brown Belt">Brown Belt</option>
+                  <option value="Black Belt">Black Belt (Dan)</option>
                 </select>
                 <div className="absolute right-0 top-4 pointer-events-none">
                   <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
               </div>
               <div className="relative group">
-                <input type="text" id="preferredTime" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
+                <input type="text" id="preferredTime" name="preferredTime" required className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer" placeholder=" " />
                 <label htmlFor="preferredTime" className="absolute left-0 top-3 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                   Preferred Days / Times
                 </label>
@@ -133,7 +153,7 @@ export default function PrivateClass() {
 
             {/* Goals */}
             <div className="relative group pt-4">
-              <textarea id="goals" required rows={4} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
+              <textarea id="goals" name="goals" required rows={4} className="w-full bg-transparent border-b-2 border-neutral-300 py-3 text-lg font-medium text-black focus:outline-none focus:border-red-700 transition-colors peer resize-none" placeholder=" "></textarea>
               <label htmlFor="goals" className="absolute left-0 top-6 text-neutral-400 text-lg font-medium transition-all duration-300 peer-focus:-top-4 peer-focus:text-xs peer-focus:text-red-700 peer-focus:font-bold peer-focus:uppercase peer-focus:tracking-widest peer-valid:-top-4 peer-valid:text-xs peer-valid:text-black peer-valid:font-bold peer-valid:uppercase peer-valid:tracking-widest cursor-text">
                 What are your specific training goals?
               </label>
@@ -155,7 +175,6 @@ export default function PrivateClass() {
                 Sensei Fung will contact you directly to discuss availability and pricing.
               </p>
             </div>
-            
           </form>
         </div>
       </section>
