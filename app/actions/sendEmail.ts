@@ -21,7 +21,7 @@ export async function sendContactEmail(formData: FormData) {
       // For testing, Resend requires you to use this specific 'from' address
       // Once you verify your actual domain in Resend later, you can change this.
       from: 'Doshinkai Dojo <onboarding@resend.dev>', 
-      to: 'david.herascu@gmail.com', // Where you want to receive the email
+      to: 'dskdojo1@gmail.com', // Where you want to receive the email
       subject: `New Dojo Inquiry: ${topic}`,
       replyTo: email as string, // This lets you easily hit "Reply" to answer them!
       html: `

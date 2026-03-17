@@ -1,25 +1,73 @@
 "use client";
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { sendContactEmail } from '@/app/actions/sendEmail';
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
+  
+  // NEW: State to track the status of the form
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (formData: FormData) => {
+    setStatus('submitting'); // Changes button to "Sending..."
     const result = await sendContactEmail(formData);
     
     if (result.success) {
-      alert("Thank you! Your message has been sent successfully.");
+      setStatus('success'); // Triggers the Success Modal
       formRef.current?.reset();
     } else {
-      alert("Oops! Something went wrong. Please try again.");
+      setStatus('error'); // Triggers the Error Modal
     }
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 selection:bg-red-700 selection:text-white pb-24">
+    <div className="min-h-screen bg-white text-neutral-900 selection:bg-red-700 selection:text-white pb-24 relative">
       
+      {/* --- SUCCESS MODAL OVERLAY --- */}
+      {status === 'success' && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+          <div className="bg-white p-10 max-w-md w-full border-t-8 border-red-700 shadow-2xl relative text-center">
+            {/* Animated Checkmark Icon */}
+            <div className="w-20 h-20 bg-red-50 text-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 className="text-3xl font-black uppercase tracking-tighter text-black mb-4">Message Sent</h3>
+            <p className="text-neutral-500 mb-8 leading-relaxed">
+              Thank you! Your inquiry has been successfully delivered. Sensei will review it and get back to you shortly.
+            </p>
+            <button 
+              onClick={() => setStatus('idle')} 
+              className="w-full bg-black text-white font-bold uppercase tracking-widest py-4 hover:bg-red-700 transition-colors duration-300"
+            >
+              Close Window
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* --- ERROR MODAL OVERLAY --- */}
+      {status === 'error' && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+          <div className="bg-white p-10 max-w-md w-full border-t-8 border-black shadow-2xl relative text-center">
+            <div className="w-20 h-20 bg-neutral-100 text-black rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </div>
+            <h3 className="text-3xl font-black uppercase tracking-tighter text-black mb-4">Transmission Failed</h3>
+            <p className="text-neutral-500 mb-8 leading-relaxed">
+              Oops! Something went wrong while sending your message. Please try again or contact us directly via email.
+            </p>
+            <button 
+              onClick={() => setStatus('idle')} 
+              className="w-full bg-red-700 text-white font-bold uppercase tracking-widest py-4 hover:bg-black transition-colors duration-300"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
+
+
       {/* 1. CINEMATIC HEADER */}
       <section className="relative pt-[120px] md:pt-[180px] pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-neutral-200">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
@@ -108,12 +156,13 @@ export default function Contact() {
               <div className="pt-6">
                 <button 
                   type="submit" 
-                  className="w-full md:w-auto relative inline-flex items-center justify-center px-12 py-5 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+                  disabled={status === 'submitting'}
+                  className={`w-full md:w-auto relative inline-flex items-center justify-center px-12 py-5 text-sm font-bold uppercase tracking-widest text-white bg-black overflow-hidden shadow-xl transition-all duration-300 group ${status === 'submitting' ? 'opacity-80 cursor-not-allowed' : 'hover:-translate-y-1'}`}
                 >
                   <span className="absolute inset-0 w-full h-full bg-red-700 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                   <span className="relative flex items-center gap-3">
-                    Send Message
-                    <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    {status === 'submitting' ? 'SENDING...' : 'SEND MESSAGE'}
+                    {status !== 'submitting' && <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>}
                   </span>
                 </button>
               </div>
