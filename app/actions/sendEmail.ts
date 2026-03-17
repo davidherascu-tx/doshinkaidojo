@@ -40,7 +40,7 @@ export async function sendContactEmail(formData: FormData) {
     await resend.emails.send({
       // Resend requires you to use their onboarding email address until you verify your domain
       from: 'Doshinkai Dojo <onboarding@resend.dev>', 
-      to: 'david.herascu@gmail.com', // Your actual email address
+      to: 'rfung29@gmail.com', // Your actual email address
       subject: `New Dojo Inquiry: ${firstName} ${lastName}`,
       // Safety net: if email is blank, default to your email so it doesn't crash the server
       replyTo: email ? (email as string) : 'dskdojo1@gmail.com',
