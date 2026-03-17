@@ -142,7 +142,7 @@ export default function Navbar() {
                   Schedule
                 </Link>
                 
-                {/* Events - UPDATED */}
+                {/* Events */}
                 <div className="relative group h-full flex items-center">
                   <button className="text-sm font-bold uppercase tracking-widest text-neutral-900 group-hover:text-red-700 transition-colors duration-300 flex items-center gap-2 cursor-pointer h-full">
                     Events
@@ -163,9 +163,30 @@ export default function Navbar() {
                   </div>
                 </div>
                 
-                <Link href="/resources" className="text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-red-700 transition-colors duration-300 relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-0 after:h-0.5 after:bg-red-700 after:transition-all after:duration-300 hover:after:w-full">
-                  Resources
-                </Link>
+                {/* Resources */}
+                <div className="relative group h-full flex items-center">
+                  <button className="text-sm font-bold uppercase tracking-widest text-neutral-900 group-hover:text-red-700 transition-colors duration-300 flex items-center gap-2 cursor-pointer h-full">
+                    Resources
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-[280px] bg-white border border-neutral-100 shadow-[0_40px_80px_rgba(0,0,0,0.08)] opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 p-4">
+                    <div className="flex flex-col gap-2">
+                      <Link href="/resources" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Global Network</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Our official partners</span>
+                      </Link>
+                      <Link href="/resources/registry" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Dan & Kyu Registry</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Official belt rankings</span>
+                      </Link>
+                      <Link href="/resources/affiliated" className="group/link block p-4 rounded-xl hover:bg-neutral-50 transition-colors duration-200 border border-transparent hover:border-neutral-100">
+                        <span className="text-sm font-bold text-neutral-900 group-hover/link:text-red-700 block">Affiliated Dojos</span>
+                        <span className="text-xs text-neutral-500 mt-1 block">Satellite groups</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Shop */}
                 <div className="relative group h-full flex items-center">
@@ -261,7 +282,7 @@ export default function Navbar() {
               Schedule
             </Link>
 
-            {/* Events Accordion - UPDATED */}
+            {/* Events Accordion */}
             <div className="border-b border-neutral-200 pb-4">
               <button 
                 onClick={() => toggleAccordion('events')}
@@ -274,6 +295,24 @@ export default function Navbar() {
                 <div className="flex flex-col space-y-4 pl-4 border-l-2 border-red-700">
                   <Link href="/events" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Upcoming Events</Link>
                   <Link href="/events/archive" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Event Archive</Link>
+                </div>
+              </div>
+            </div>
+            
+            {/* Resources Accordion */}
+            <div className="border-b border-neutral-200 pb-4">
+              <button 
+                onClick={() => toggleAccordion('resources')}
+                className="w-full flex justify-between items-center text-left text-2xl font-black uppercase tracking-tight text-neutral-900"
+              >
+                Resources
+                <span className={`text-red-700 transition-transform duration-300 ${activeAccordion === 'resources' ? 'rotate-45' : ''}`}>+</span>
+              </button>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeAccordion === 'resources' ? 'max-h-52 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="flex flex-col space-y-4 pl-4 border-l-2 border-red-700">
+                  <Link href="/resources" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Global Network</Link>
+                  <Link href="/resources/registry" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Dan & Kyu Registry</Link>
+                  <Link href="/resources/affiliated" onClick={closeMobileMenu} className="text-sm font-bold text-neutral-600 hover:text-red-700 uppercase tracking-widest">Affiliated Dojos</Link>
                 </div>
               </div>
             </div>
@@ -297,10 +336,6 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-
-            <Link href="/resources" onClick={closeMobileMenu} className="text-2xl font-black uppercase tracking-tight text-neutral-900 border-b border-neutral-200 pb-4">
-              Resources
-            </Link>
 
             {/* JOIN / SIGN UP Accordion */}
             <div className="border-b border-neutral-200 pb-4">

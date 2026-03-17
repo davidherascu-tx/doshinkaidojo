@@ -1,8 +1,32 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
+  // This is the invisible SEO data that tells Google you are a local business
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Doshinkai Dojo",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6620 Montgomery Road, Suite 3",
+      "addressLocality": "Cincinnati",
+      "addressRegion": "OH",
+      "postalCode": "45213",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-832-513-0058",
+    "url": "https://doshinkaidojo.com" // Update this if your live domain is different
+  };
+
   return (
     <div className="min-h-screen bg-white text-neutral-900 selection:bg-red-700 selection:text-white">
+      
+      {/* INJECT LOCAL SEO SCHEMA */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* 1. HERO SECTION */}
       <section className="relative pt-[120px] md:pt-[150px] pb-20 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -52,10 +76,14 @@ export default function Home() {
         {/* Right: Image/Visual Block */}
         <div className="w-full lg:w-1/2 relative">
           <div className="aspect-[4/5] bg-neutral-100 relative overflow-hidden group">
-            <img 
+            {/* UPDATED: Next.js Image Component for better SEO / Page Speed */}
+            <Image 
               src="/hero_image.webp" 
               alt="Doshinkai Dojo Karate Training" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+              className="object-cover group-hover:scale-105 transition-transform duration-700" 
             />
             {/* Decorative element */}
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-red-700 hidden md:block z-10"></div>
@@ -66,9 +94,7 @@ export default function Home() {
       {/* 2. PHILOSOPHY & STORY SECTION */}
       <section className="bg-black text-white py-24 md:py-32 relative overflow-hidden">
 
-        
         {/* Giant Kanji Background Watermark */}
-        {/* ADJUSTED: Changed from text-neutral-900 opacity-50 to text-white/5 */}
         <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[250px] md:text-[400px] font-black text-white/5 select-none pointer-events-none z-0">
           空手道
         </div>
@@ -83,8 +109,6 @@ export default function Home() {
               </h2>
               <div className="w-12 h-1 bg-red-700 mt-6"></div>
               
-              {/* NEW: Massive Kanji relocated here */}
-              {/* ADJUSTED: Changed from text-neutral-800 to text-white */}
               <div className="text-6xl md:text-8xl font-black tracking-widest text-white select-none mt-12 md:mt-24">
                 空手道
               </div>

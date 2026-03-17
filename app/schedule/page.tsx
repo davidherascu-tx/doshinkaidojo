@@ -1,4 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Class Schedule',
+  description: 'View the training schedule for Doshinkai Dojo in Cincinnati. We offer youth, adult, and advanced Shotokan Karate classes both in-person and via Zoom.',
+};
 
 export default function Schedule() {
   const scheduleData = [
